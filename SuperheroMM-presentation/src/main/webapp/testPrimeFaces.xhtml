@@ -1,0 +1,84 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<h:outputScript library="JS" name="Script2.js" />
+	<h:outputStylesheet library="CSS" name="Style2.css" />
+	<title>Creation de SuperHero 1</title>
+</h:head>
+
+<h:body styleClasses="container-fluid">
+	<ui:composition template="/template/template.xhtml">
+		<ui:define name="content">
+
+
+			<h:form id="bl3">
+				<div class="row">
+					<div>
+						<h:outputLabel value="Nom :" />
+						<h:inputText styleClass="form-group"
+							value="#{superheroBisBean.superherobis.nom}" id="nom" />
+					</div>
+					<div>
+						<h:outputLabel value="Prenom :" />
+						<h:inputText styleClass="form-group"
+							value="#{superheroBisBean.superherobis.prenom}" id="prenom" />
+					</div>
+					<div>
+						<h:outputLabel value="Alias :" />
+						<h:inputText styleClass="form-group"
+							value="#{superheroBisBean.superherobis.alias}" id="alias" />
+					</div>
+					<div class="row">
+						<div class="col-lg-offset-11 col-lg-1">
+							<h:commandButton value="validez"
+								action="#{superheroBisBean.collectSuperhero}">
+							</h:commandButton>
+						</div>
+					</div>
+				</div>
+			</h:form>
+
+			<h:form>
+				<h:commandButton value="Obtenir Liste de Service"
+					action="#{superheroBisBean.listHero}" />
+			</h:form>
+
+			<p:dataTable var="sh" value="#{superheroBisBean.maListSH}"
+				id="table1">
+				<p:column headerText="nom">
+					<h:outputText value="#{sh.nom}" />
+				</p:column>
+
+				<p:column headerText="prenom">
+					<h:outputText value="#{sh.prenom}" />
+				</p:column>
+
+				<p:column headerText="alias">
+					<h:outputText value="#{sh.alias}" />
+				</p:column>
+				
+				<p:column>
+				<p:commandButton actionListener="#{superheroBisBean.listHero()}" id="iconOnly"  icon="fa-frown-o" title="Icon Only" />
+				</p:column>
+				
+			</p:dataTable>
+		</ui:define>
+	</ui:composition>
+
+
+</h:body>
+</html>
